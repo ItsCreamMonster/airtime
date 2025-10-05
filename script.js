@@ -76,7 +76,8 @@ function goLive() {
             limit: {
                 minutes: formData.get("minutes"),
                 seconds: formData.get("seconds")
-            }
+            },
+            overtime: false
         }
         
         url.searchParams.set("minutes", formData.get("minutes"));
