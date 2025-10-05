@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {
+    font-family: 'Space Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+    overflow: hidden;
+}
+
+body.overtime {
+    animation: bgPulse infinite 3s linear;
+}
+
+@keyframes bgPulse {
+    0% {
+        background-color: rgb(0, 0, 0);
+    }
+    50% {
+        background-color: rgb(85, 0, 0);
+    }
+}
+
+h1#counter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ff0000;
+    font-size: 20vw;
+    margin: 0;
+    text-wrap: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+
+/* DIALOG INPUT FORM */
+dialog {
+    z-index: 1;
+    overflow: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Space Grotesk', 'Consolas', monospace;
+    color: #ffffff;
+    border: none;
+    max-width: 640px;
+    max-height: 60vh;
+    margin: 0;
+    padding: 16px;
+    background-color: #121212;
+}
+
+dialog[open] {
+    display: flex;
+    flex-direction: column;
+}
+
+img#logo {
+    width: 128px;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+    float: left;
+}
+
+.portraitWarning {
+    margin-top: 16px;
+    color: #121212;
+    background-color: #FFD4007F;
+    display: none;
+}
+
+.portraitWarning p {
+    margin: 16px;
+}
+
+@media screen and (orientation: portrait) {
+    dialog {
+        max-height: 40vh;
+        width: 75%;
+    }
+
+    img#logo {
+        width: 40% !important;
+    }
+
+    .portraitWarning {
+        display: block;
+    }
+}
+
+.webAppInfo {
+    margin-top: 16px;
+    color: #121212;
+    background-color: #00FF007F;
+    display: none;
+}
+
+@supports (-webkit-touch-callout: none) {
+    @media not all and (display-mode: standalone) {
+        .webAppInfo {
+            display: block;
+        }
+    }
+    
+}
+
+.webAppInfo p {
+    margin: 16px;
+}
+
+dialog#start form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    text-align: center;
+}
+
+.stopwatchContainer {
+    margin: 16px;
+}
+
+legend {
+    font-weight: 500;
+}
+
+fieldset {
+    color: #aaaaaa;
+    border-color: #aaaaaa;
+}
+
+fieldset[disabled] input, fieldset[disabled] label {
+    color: #aaaaaa !important;
+}
+
+input {
+    color: #ffffff;
+    font-family: 'Space Grotesk';
+    font-weight: 500;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 8px;
+}
+
+input[type=checkbox] {
+    scale: 1.5;
+    margin-right: 8px;
+}
+
+label {
+    color: #ffffff;
+}
+
+form small {
+    color: #aaaaaa;
+}
+
+#goLive-submit {
+    color: #121212;
+    font-family: 'Space Grotesk', 'Consolas', monospace;
+    font-weight: 700;
+    font-size: 1.1rem;
+    background-color: #ff0000;
+    border: none;
+    padding: 8px 36px;
+    cursor: pointer;
+}
+
+#goLive-submit:hover {
+    animation: goLiveHover 1.5s infinite ease;
+}
+
+@keyframes goLiveHover {
+    0% {
+        color: #121212;
+        background-color: #ff0000;
+    }
+    50% {
+        color: #ff0000;
+        background-color: transparent;
+    }
+    100% {
+        color: #121212;
+        background-color: #ff0000;
+    }
+}
+
+
+/* CONFIRM STOP NOTIFICATION */
+#stopNotification {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000BF;
+    font-family: 'Space Grotesk', 'Consolas', monospace;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #ff0000;
+    text-align: center;
+    user-select: none;
+    display: none;
+    transition: 0.2s opacity ease;
+    opacity: 0;
+}
+
+#stopNotification span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#stopNotification.snVisible {
+    animation: snFadeIn 1s ease;
+    opacity: 1;
+}
+
+#stopNotification.snFadeOut {
+    animation: snFadeOut 1s ease;
+    opacity: 0;
+}
+
+@keyframes snFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes snFadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* DIALOG END */
+dialog#end {
+    text-align: center;
+}
+
+.endStats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 16px;
+    margin-top: 24px;
+}
+
+#end-runtime {
+    font-size: 1.5rem;
+}
+
+#end-limitAndOvertime {
+    font-size: 1rem;
+}
+
+@media screen and (orientation: portrait) {
+    .endStats {
+        margin: 0;
+        margin-top: 24px;
+        margin-bottom: 16px;
+    }
+}
+
+#restart-btn {
+    color: #121212;
+    font-family: 'Space Grotesk', 'Consolas', monospace;
+    font-weight: 700;
+    font-size: 1.1rem;
+    background-color: #ff0000;
+    border: none;
+    padding: 8px 36px;
+    cursor: pointer;
+}
+
+#restart-btn:hover {
+    animation: goLiveHover 1.5s infinite ease;
+}

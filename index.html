@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[AIR] TIME</title>
+    <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="[AIR] TIME">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link href="/styles.css" rel="stylesheet">
+    <script src="/script.js" defer></script>
+</head>
+<body>
+    <dialog id="start" open>
+        <img src="/images/logo_wide.png" id="logo">
+
+        <div class="portraitWarning">
+            <p><b>PLEASE NOTE:</b> it's not recommended to use [AIR] TIME in portrait mode. If possible, rotate your screen/device to <span style="font-weight: 500;">landscape mode</span> for the best experience.</p>
+        </div>
+        <div class="webAppInfo">
+            <p>This website is available as a web app! To use it, tap <b>share</b>, then <b>add to homescreen.</b></p>
+        </div>
+
+        <form>
+            <fieldset class="field-time">
+                <legend>Time (Countdown)</legend>
+
+                <input type="number" id="minutes" name="minutes" min="1" max="90" step="1" placeholder="10" dir="rtl" inputmode="numeric" required>
+                <label for="minutes">Minutes</label>
+                <input type="number" id="seconds" name="seconds" min="0" max="59" step="5" placeholder="0" dir="rtl" inputmode="numeric" required>
+                <label for="seconds">Seconds</label>
+                <br>
+                <small id="time-desc" class="inputDesc">How many minutes and seconds the timer will be set for. After reaching the end, the screen will start pulsing and showing an overtime counter.</small>
+            </fieldset>
+
+            <div class="stopwatchContainer">
+                <input type="checkbox" id="stopwatch" name="stopwatch" aria-describedby="stopwatch-desc">
+                <label for="stopwatch">Stopwatch</label>
+                <br>
+                <small id="stopwatch-desc" class="inputDesc">This will make the timer become a stopwatch instead of counting down. Activating this toggle will disable the time inputs.</small>
+            </div>
+            
+            <button type="submit" id="goLive-submit">GO LIVE</button>
+        </form>
+    </dialog>
+    <dialog id="end">
+        <img src="/images/logo_wide.png" id="logo">
+
+        <div class="endStats">
+            <span id="end-runtime">15 minutes 24 seconds</span>
+            <span id="end-limitAndOvertime">15:00 • Overtime: 00:24</span>
+        </div>
+
+        <button id="restart-btn">RESTART</button>
+    </dialog>
+
+    <div id="stopNotification">
+        <span>Press SPACE or tap anywhere to end.</span>
+    </div>
+
+    <h1 id="counter"></h1>
+</body>
+</html>
