@@ -196,7 +196,7 @@ function endSession() {
             seconds: time.limit.seconds - time.seconds
         }
         if (time.seconds < 60) { correctedTime.minutes -= 1; }
-        if (time.limit.seconds - time.seconds < 0 && overtime == false) { correctedTime.seconds += 60; }
+        if (time.limit.seconds - time.seconds < 0 && time.overtime == false) { correctedTime.seconds += 60; }
 
         // Overtime
         if (time.overtime == true) {
